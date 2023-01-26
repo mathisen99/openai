@@ -9,7 +9,7 @@ document.getElementById("openai-form").addEventListener("submit", function(event
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer CHANGE_ME'
+        'Authorization': 'Bearer CHANGEME'
       },
       body: JSON.stringify({
         prompt: document.getElementById("input-text").value,
@@ -23,13 +23,13 @@ document.getElementById("openai-form").addEventListener("submit", function(event
       })
       .then(function(data) {
         // Display the response in the response area
-        document.getElementById("response-code").innerHTML = data.choices[0].text;
+        handleResponse(data);
       });
   });
   
   function handleResponse(response) {
     var responseArea = document.getElementById("response-area");
-    var responseText = response.data.choices[0].text;
+    var responseText = response.choices[0].text;
     var delay = 50; // delay between characters in milliseconds
     
     // Clear any existing text in the response area
@@ -45,4 +45,5 @@ document.getElementById("openai-form").addEventListener("submit", function(event
       })(i);
     }
   }
+
   
